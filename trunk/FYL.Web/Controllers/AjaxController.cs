@@ -33,12 +33,13 @@ namespace FYL.Web.Controllers
         [ActionName("QueryInfo")]
         public JsonResult Query(QueryLotteryReq req)
         {
-            double probability = 0.000001, historyMaxFlawed = 10;//理论出现概率，历史最大披露
+            double probability = 0, historyMaxFlawed = 10;//理论出现概率，历史最大披露
             int historyWinningCount = 10;//历史开奖中奖次数
             if (req.LotteryType == "Sd11x5")
             {
                 //理论出现概率 待实现
                 //CreateQueue();
+                probability = 1 * 100 / (11 * 10 * 9 * 8 * 7);
 
                 //历史开奖中的中奖次数
                 historyWinningCount = GetHistoryWinningCount(req.LotteryCode);
