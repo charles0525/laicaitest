@@ -42,7 +42,6 @@
   <ItemGroup>
     <Compile Include="Custom\CustomException.cs" />
     <Compile Include="Custom\NoteAttribute.cs" />
-    <Compile Include="Custom\UserBase.cs" />
     <Compile Include="DB\SiteInfoEntity.cs" />
     <Compile Include="Enum\EnumDataProviderType.cs" />
     <Compile Include="Enum\EnumRspStatus.cs" />
