@@ -50,9 +50,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DataProvider\BaseDataProvider.cs" />
-    <Compile Include="DataProvider\PmhMallDataProvider.cs" />
-    <Compile Include="DataProvider\PmhMobileDataProvider.cs" />
-    <Compile Include="DataProvider\PmhMobileHotDataProvider.cs" />
     <Compile Include="DataProvider\TestDbProvider.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

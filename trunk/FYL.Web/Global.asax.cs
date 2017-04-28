@@ -24,7 +24,7 @@ namespace FYL.Web
             GlobalConfiguration.Configure(WebApiConfig.Register);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
 
-            LoadHistoryLottery.SetContentToCache();
+            HistoryLotteryHelper.SetContentToCache();
             ServicePointManager.ServerCertificateValidationCallback = new RemoteCertificateValidationCallback(OnRemoteCertificateValidationCallback);
         }
 

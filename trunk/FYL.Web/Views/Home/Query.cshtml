@@ -18,9 +18,9 @@
         <div>
             <table border="1">
                 <tr>
-                    <th>理论出现概率</th>
+                    <th>理论出现概率(%)</th>
                     <th>历史开奖中奖次数</th>
-                    <th>历史最大遗漏</th>
+                    <th>历史最大遗漏(%)</th>
                 </tr>
                 <tr>
                     <td class="td-probability">0</td>
@@ -45,9 +45,9 @@
                 LotteryCode = $("#LotteryCode").val();
             $.get('/ajax/QueryInfo', { LotteryType: LotteryType, LotteryCode: LotteryCode }, function (data) {
                 if (data.result == 1&&!!data.value) {
-                    $(".td-probability").html(data.value.probability+'%');
-                    $(".td-historyWinningCount").html(data.value.historyWinningCount + '%');
-                    $(".td-historyMaxFlawed").html(data.value.historyMaxFlawed + '%');
+                    $(".td-probability").html(data.value.probability);
+                    $(".td-historyWinningCount").html(data.value.historyWinningCount );
+                    $(".td-historyMaxFlawed").html(data.value.historyMaxFlawed );
                 } else {
                     alert(data.errorMsg);
                 }
@@ -55,7 +55,7 @@
         } catch (msg) {
             alert(msg);
         } finally {
-            $("#btnQuery").on("click");
+            $("#btnQuery").on("click", query);
         }
     }
 

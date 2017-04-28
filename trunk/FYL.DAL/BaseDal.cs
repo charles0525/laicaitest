@@ -9,9 +9,6 @@ namespace FYL.DAL
 {
     public class BaseDal
     {
-        //protected readonly PmhMallDataProvider DbMall = PmhMallDataProvider.instance;
-        //protected readonly PmhMobileDataProvider DbMobile = PmhMobileDataProvider.instance;
-        //protected readonly PmhMobileHotDataProvider DbMobileHot = PmhMobileHotDataProvider.instance;
         protected readonly TestDbProvider TestDb = TestDbProvider.instance;
 
         /// <summary>

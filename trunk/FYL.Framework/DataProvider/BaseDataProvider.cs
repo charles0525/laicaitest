@@ -43,16 +43,10 @@ namespace FYL.Framework.DataProvider
         {
             switch (_emProvider)
             {
-                case EnumDataProviderType.PmhMall:
-                    return ConfigurationManager.AppSettings["MallConnectionString"];
-                case EnumDataProviderType.PmhMobile:
-                    return ConfigurationManager.AppSettings["MobileConnectionString"];
-                case EnumDataProviderType.PmhMobileHot:
-                    return ConfigurationManager.AppSettings["MobileHotConnectionString"];
                 case EnumDataProviderType.TestDb:
                     return ConfigurationManager.AppSettings["TestConn"];
                 default:
-                    throw new Exception("获取数据库链接失败");
+                    throw new CustomException("获取数据库链接失败");
             }
         }
     }

@@ -142,7 +142,7 @@
     <Compile Include="Common\ConstValues.cs" />
     <Compile Include="Common\DataExtend.cs" />
     <Compile Include="Common\JsonHelper.cs" />
-    <Compile Include="Common\LoadHistoryLottery.cs" />
+    <Compile Include="Common\HistoryLotteryHelper.cs" />
     <Compile Include="Common\PageExceptionAttribute.cs" />
     <Compile Include="Common\RspHeaderHttpModule.cs" />
     <Compile Include="Controllers\AjaxController.cs" />

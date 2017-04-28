@@ -33,16 +33,15 @@ namespace FYL.Web.Controllers
         [ActionName("QueryInfo")]
         public JsonResult Query(QueryLotteryReq req)
         {
-            double probability = 0, historyMaxFlawed = 10;//理论出现概率，历史最大披露
-            int historyWinningCount = 10;//历史开奖中奖次数
+            string probability = "0", historyWinningCount = "0", historyMaxFlawed = "0";//理论出现概率,历史开奖中奖次数，历史最大披露
             if (req.LotteryType == "Sd11x5")
             {
-                //理论出现概率 待实现
+                //理论出现概率
                 //CreateQueue();
-                probability = 1 * 100 / (11 * 10 * 9 * 8 * 7);
+                probability = string.Format("{0:0.#####}", 1 * 100*0.00001 / (11 * 10 * 9 * 8 * 7*0.00001));
 
                 //历史开奖中的中奖次数
-                historyWinningCount = GetHistoryWinningCount(req.LotteryCode);
+                historyWinningCount = GetHistoryWinningCount(req.LotteryCode).ToString();
 
                 //历史最大遗漏  待实现
             }
@@ -67,30 +66,30 @@ namespace FYL.Web.Controllers
         }
 
         /// <summary>
-        /// 随机数
+        /// 取5个随机数
         /// </summary>
-        /// <param name="ACount">个数</param>
-        /// <param name="AMinValue">最小值</param>
-        /// <param name="AMaxValue">最大值</param>
+        /// <param name="aCount">个数</param>
+        /// <param name="aMinValue">最小值</param>
+        /// <param name="aMaxValue">最大值</param>
         /// <returns></returns>
-        private static int[] RandomNumbers(int ACount, int AMinValue, int AMaxValue)
+        private static int[] RandomNumbers(int aCount, int aMinValue, int aMaxValue)
         {
-            if (ACount <= 0) return null;
-            if (AMaxValue < AMinValue)
-                AMinValue = AMaxValue | (AMaxValue = AMinValue) & 0;
-            if (ACount > AMaxValue - AMinValue + 1) return null;
+            if (aCount <= 0) return null;
+            if (aMaxValue < aMinValue)
+                aMinValue = aMaxValue | (aMaxValue = aMinValue) & 0;
+            if (aCount > aMaxValue - aMinValue + 1) return null;
             List<int> vValues = new List<int>();
-            for (int i = AMinValue; i <= AMaxValue; i++)
+            for (int i = aMinValue; i <= aMaxValue; i++)
                 vValues.Add(i);
-            int[] Result = new int[ACount];
+            int[] result = new int[aCount];
             Random vRandom = new Random();
-            for (int i = 0; i < ACount; i++)
+            for (int i = 0; i < aCount; i++)
             {
                 int j = vRandom.Next(vValues.Count);
-                Result[i] = vValues[j];
+                result[i] = vValues[j];
                 vValues.RemoveAt(j);
             }
-            return Result;
+            return result;
         }
 
         /// <summary>
@@ -100,7 +99,7 @@ namespace FYL.Web.Controllers
         /// <returns></returns>
         private static int GetHistoryWinningCount(string code)
         {
-            var cacheData = CacheHelper.Get<string>(ConstValues.CacheKey_HistoryLottery);
+            var cacheData = HistoryLotteryHelper.GetContentFromCache();
             var strCode = $"[{code}]";
             var count = (cacheData.Length - cacheData.Replace(strCode, "").Length) / strCode.Length;
             return count;
